@@ -1,0 +1,22 @@
+###
+GET http://localhost:8080/api/cursos
+
+###
+GET http://localhost:8080/api/cursos/2
+Authorization: Basic dXN1YXJpbzE6dXNlcjEyMw==
+
+###
+# dXN1YXJpbzE6dXNlcjEyMw== : usuario1
+# YWRtaW46YWRtaW4xMjM= : admin
+POST http://localhost:8080/api/cursos
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+Content-Type: application/json
+
+{
+    "title": "Curso 1",
+    "description": "Este es el curso para ..."
+}
+
+###
+DELETE http://localhost:8080/api/cursos/1
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
