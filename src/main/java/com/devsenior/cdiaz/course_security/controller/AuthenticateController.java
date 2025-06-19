@@ -6,18 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsenior.cdiaz.course_security.model.dto.AuthenticationRequest;
 import com.devsenior.cdiaz.course_security.model.dto.AuthenticationResponse;
+import com.devsenior.cdiaz.course_security.service.AuthenticationService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
-
+@RequiredArgsConstructor
 @RestController
 public class AuthenticateController {
+
+    private final AuthenticationService authenticationService;
     
     @PostMapping("/authenticate")
     public AuthenticationResponse authenticate(@Valid @RequestBody AuthenticationRequest body) {
-        //TODO: process POST request
-        
-        return null;
+        return authenticationService.login(body);
     }
     
 }

@@ -61,7 +61,8 @@ public class JwtUtil {
         var claims = new HashMap<String, Object>();
         // Agregar la informacion al token
         claims.put("roles", userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority).toList());
+                .map(GrantedAuthority::getAuthority)
+                .toList());
 
         // crear el token con los claims
         return createToken(claims, userDetails.getUsername());

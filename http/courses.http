@@ -2,21 +2,21 @@
 GET http://localhost:8080/api/cursos
 
 ###
-GET http://localhost:8080/api/cursos/2
-Authorization: Basic dXN1YXJpbzE6dXNlcjEyMw==
+GET http://localhost:8080/api/cursos/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoidXN1YXJpbzEiLCJpYXQiOjE3NTAzMDI2NzksImV4cCI6MTc1MDM4OTA3OX0.IA4nff12JgUf6k0jpnZH4UeKrLHezZ-d8NLNhIzyenc
 
 ###
-# dXN1YXJpbzE6dXNlcjEyMw== : usuario1
-# YWRtaW46YWRtaW4xMjM= : admin
+# usuario1 : eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoidXN1YXJpbzEiLCJpYXQiOjE3NTAzMDI2NzksImV4cCI6MTc1MDM4OTA3OX0.IA4nff12JgUf6k0jpnZH4UeKrLHezZ-d8NLNhIzyenc
+# admin: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6ImFkbWluIiwiaWF0IjoxNzUwMjk5MDAwLCJleHAiOjE3NTAzODU0MDB9.BQbkl-xRLJTK9NZQXS2DSVMLfEy8K9C0Tu_XeXnwfCE
 POST http://localhost:8080/api/cursos
-Authorization: Basic YWRtaW46YWRtaW4xMjM=
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoidXN1YXJpbzEiLCJpYXQiOjE3NTAzMDI2NzksImV4cCI6MTc1MDM4OTA3OX0.IA4nff12JgUf6k0jpnZH4UeKrLHezZ-d8NLNhIzyenc
 Content-Type: application/json
 
 {
-    "title": "Curso 1",
+    "title": "Curso 3",
     "description": "Este es el curso para ..."
 }
 
 ###
-DELETE http://localhost:8080/api/cursos/1
-Authorization: Basic YWRtaW46YWRtaW4xMjM=
+DELETE http://localhost:8080/api/cursos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl0sInN1YiI6ImFkbWluIiwiaWF0IjoxNzUwMjk5MDAwLCJleHAiOjE3NTAzODU0MDB9.BQbkl-xRLJTK9NZQXS2DSVMLfEy8K9C0Tu_XeXnwfCE
