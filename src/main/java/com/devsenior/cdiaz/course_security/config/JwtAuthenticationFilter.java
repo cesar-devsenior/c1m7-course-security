@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
 
     @Override
@@ -53,16 +52,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             log.info("Hay que cargar el usuario al contexto");
             // var userDetails = userDetailsService.loadUserByUsername(username);
 
-            List<String> roles = jwtUtil.extractClaim(token, (claim) -> {
-                return (List<String>) claim.get("roles");
-            });
+            List<?> rolesRaw = jwtUtil.extractClaim(token, claims -> claims.get("roles", List.class));
+            var roles = rolesRaw.stream()
+                    .map(Object::toString)
+                    .map(SimpleGrantedAuthority::new)
+                    .toList();
 
             log.info("Roles {}", roles);
 
-            var userDetails = new User(username, "0",
-                    roles.stream()
-                            .map(e -> new SimpleGrantedAuthority(e))
-                            .toList());
+            var userDetails = new User(username, "0", roles);
 
             if (jwtUtil.validateToken(token, userDetails)) {
                 var authToken = new UsernamePasswordAuthenticationToken(userDetails, null,
